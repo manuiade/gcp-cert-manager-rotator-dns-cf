@@ -1,0 +1,7 @@
+python-dateutil
+httplib2
+pytz
+google-cloud-compute
+google-api-python-client
+google-cloud-certificate-manager
+tldextract
