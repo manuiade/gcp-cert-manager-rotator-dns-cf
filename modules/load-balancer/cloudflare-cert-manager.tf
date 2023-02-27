@@ -84,7 +84,7 @@ resource "google_cloudfunctions2_function" "cert_manager_rotator_function" {
     source {
       storage_source {
         bucket = google_storage_bucket.source_code_bucket.name
-        object = "source-code/cert-manager-rotator-code.zip"
+        object = google_storage_bucket_object.cert_manager_rotator_source_code.output_name
       }
     }
   } 

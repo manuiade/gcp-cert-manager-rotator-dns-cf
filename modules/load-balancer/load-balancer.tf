@@ -42,7 +42,13 @@ resource "google_compute_target_https_proxy" "https" {
   
   url_map          = google_compute_url_map.https.self_link
 
-  certificate_map = google_certificate_manager_certificate_map.cmap.name
+  certificate_map = "//certificatemanager.googleapis.com/projects/${var.project_id}/locations/global/certificateMaps/${google_certificate_manager_certificate_map.cmap.name}"
+
+  lifecycle {
+    ignore_changes = [
+      certificate_map
+    ]
+  }
 }
 
 // Definition of target http proxy which forward incoming http request to the http url map

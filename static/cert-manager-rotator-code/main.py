@@ -335,7 +335,7 @@ def rotate_certs(request):
 	create_new_certs()
 	if check_certificates_status():
 		print("Certificate rotated.. pausing Cloud Scheduler job..")
-		#pause_cloud_scheduler()
+		pause_cloud_scheduler()
 	else:
 		print("Certificates not rotated..")
 

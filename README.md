@@ -85,11 +85,6 @@ terraform apply plan.out
 
 ## Cleanup
 
-### TF resources
-```
-terraform destroy
-```
-
 ### Other resources
 
 Note that the certificates manager resources are created by the Cloud Function, thus you have to delete them manually:
@@ -98,4 +93,11 @@ Note that the certificates manager resources are created by the Cloud Function, 
 gcloud certificate-manager maps entries delete <CERT_MAP_ENTRY_NAME> --map <CERT_MAP_NAME>
 gcloud certificate-manager certificates delete <CERT_NAME>
 gcloud certificate-manager dns-authorizations delete <DNS_AUTH_NAME>
+```
+
+Delete also the CNAME record from Cloudflare used for DNS Authorization
+
+### TF resources
+```
+terraform destroy
 ```
