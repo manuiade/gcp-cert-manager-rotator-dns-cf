@@ -4,18 +4,6 @@
 
 locals {
 
-  // Required permissions for cloud function in order to perform cert rotation
-  cert_rotator_custom_role_permissions = [
-    "compute.targetHttpsProxies.get",
-    "compute.targetHttpsProxies.list",
-    "compute.targetHttpsProxies.setSslCertificates",
-    "compute.sslCertificates.create",
-    "compute.sslCertificates.delete",
-    "compute.sslCertificates.get",
-    "compute.sslCertificates.list",
-    "cloudscheduler.jobs.pause"
-  ]
-
   cert_manager_rotator_custom_role_permissions = [
     "certificatemanager.certmapentries.get",
     "certificatemanager.certmapentries.list",

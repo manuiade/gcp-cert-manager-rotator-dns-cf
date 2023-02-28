@@ -156,6 +156,8 @@ def create_dns_auths():
 				response.raise_for_status()
 			except requests.exceptions.HTTPError as e:
 				print(e)
+			# Wait some time to not exceed the Cloudflare API rate limits
+			time.sleep(2)
 	return
 
 

@@ -11,27 +11,11 @@ resource "google_service_account" "cert_rotator_sa" {
 }
 
 // Custom role with minimum permission required to manage ssl certificates and LB
-resource "google_project_iam_custom_role" "cert_rotator_custom_role" {
-  role_id     = "cert_rotator_custom_role"
-  title       = "cert_rotator_custom_role"
-  permissions = local.cert_rotator_custom_role_permissions
-  project     = var.project_id
-}
-
-// Custom role with minimum permission required to manage ssl certificates and LB
 resource "google_project_iam_custom_role" "cert_manager_rotator_custom_role" {
   role_id     = "cert_manager_rotator_custom_role"
   title       = "cert_manager_rotator_custom_role"
   permissions = local.cert_manager_rotator_custom_role_permissions
   project     = var.project_id
-}
-
-
-// IAM custom role assigned to service account
-resource "google_project_iam_member" "cert_rotator_sa_iam" {
-  project = var.project_id
-  role    = google_project_iam_custom_role.cert_rotator_custom_role.id
-  member  = format("serviceAccount:%s", google_service_account.cert_rotator_sa.email)
 }
 
 // IAM custom role assigned to service account
