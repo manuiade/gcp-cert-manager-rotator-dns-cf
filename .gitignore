@@ -6,9 +6,6 @@
 *.tfstate
 *.tfstate.*
 
-# .lock.hcl files
-*.lock.hcl
-
 # plan file
 plan.out
 out.plan
