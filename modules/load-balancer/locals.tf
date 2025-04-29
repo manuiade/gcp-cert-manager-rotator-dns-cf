@@ -35,6 +35,6 @@ locals {
     for c in local.chunked_new_domain_list : "ssl-${sha1(join("", c))}"
   ])
 
-  new_certs_list = join(",", local.new_certs)
-  new_domains_list   = join(",", var.domain_list)
+  new_certs_list   = join(",", local.new_certs)
+  new_domains_list = join(",", var.domain_list)
 }

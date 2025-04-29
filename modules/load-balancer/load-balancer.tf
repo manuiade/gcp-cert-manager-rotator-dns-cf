@@ -6,7 +6,7 @@
 
 // Creates a global external IPV4 address
 resource "google_compute_global_address" "global_ipv4" {
-  name = var.load_balancer
+  name       = var.load_balancer
   ip_version = "IPV4"
   purpose    = ""
   project    = var.project_id
@@ -35,12 +35,12 @@ resource "google_compute_url_map" "http" {
 
 // Definition of the target https proxy which terminates SSL connections and forwards them to the https url map
 resource "google_compute_target_https_proxy" "https" {
-  name             = var.load_balancer
-  project          = var.project_id
-  proxy_bind       = false
-  quic_override    = "ENABLE"
-  
-  url_map          = google_compute_url_map.https.self_link
+  name          = var.load_balancer
+  project       = var.project_id
+  proxy_bind    = false
+  quic_override = "ENABLE"
+
+  url_map = google_compute_url_map.https.self_link
 
   certificate_map = "//certificatemanager.googleapis.com/projects/${var.project_id}/locations/global/certificateMaps/${google_certificate_manager_certificate_map.cmap.name}"
 
